@@ -35,6 +35,49 @@ class UserController {
       provider
     });
   }
+
+  async update(req, res) {
+    console.log(req.userId);
+
+    const schema = Yup.object().shape({
+      name: Yup.string(),
+      email: Yup.string().email(),
+      oldPassword: Yup.string(),
+      password: Yup.string()
+        .min(8)
+        .when("oldPassword", (oldPassword, field) => {
+          return oldPassword ? field.required() : field;
+        }),
+      confirmPassword: Yup.string().when("password", (password, field) => {
+        return password ? field.required().oneOf([Yup.ref("password")]) : field;
+      })
+    });
+
+    if (!(await schema.isValid(req.body)))
+      return res.status(400).json({ error: "Validation failed." });
+
+    const { email, oldPassword } = req.body;
+
+    const user = await User.findByPk(req.userId);
+
+    if (email !== user.email) {
+      const userExists = await User.findOne({ where: { email } });
+
+      if (userExists)
+        return res.status(400).json({ error: "User already exists." });
+    }
+    if (oldPassword && !(await user.checkPassword(oldPassword)))
+      return res.status(400).json({ error: "Password not macth." });
+
+    const { id, name, provider } = await user.update(req.body);
+
+    return res.json({
+      id,
+      name,
+      email,
+      provider
+    });
+  }
 }
 
 export default new UserController();
