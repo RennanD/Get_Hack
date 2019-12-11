@@ -11,8 +11,8 @@
 [x] Cadastrar hacakthons com titulo, descrição, data e hora, premiação e banner (Campos obrigatórios) e um campo user_id se relacionando com o organizador do hackathon
 [x] Não será possivel cadastrar hacakthons em datas que ja passaram
 [x] Hackathons que ainda não aconteceram poderam ser editados pelo organizador
-[] Criar rota pra listar hackathons do usuário logado
-[] Hackathons que ainda não aconteceram podem ser cancelados (e deletados do banco de dados)
+[x] Criar rota pra listar hackathons do usuário logado
+[x] Hackathons que ainda não aconteceram podem ser cancelados (e deletados do banco de dados)
 
 [] O usuário pode se inscrever em hackathons que não organiza.
 [] O usuário não pode se inscrever em hackathons que já aconteceram
@@ -20,6 +20,7 @@
 [] O usuário não pode se casdatrar em hackathons que aconteceram no mesmo horário
 [] Enviar um e-mail ao organizador toda vez que um usuário novo se inscrever em
 um hackathon
+[] Enviar ao usuário um notificação toda vez que um hackathon for cancelado.
 
 [] Criar rota para listar hackathons com filtro por data (não por hora),
 sendo retornado 10 itens por página, mostrando dados do organizador

@@ -6,7 +6,30 @@ import File from '../models/File';
 import User from '../models/User';
 
 class HackathonController {
+
+    /*
+    * List user's Hackathons.
+    */
+
+    async index(req, res) {
+        
+        const hackathon = await Hackathon.findAll({
+            where: {organizer_id: req.userId},
+            include:[
+                {
+                    model: File,
+                    as: 'banner',
+                    attributes: ['id', 'path', 'url']
+                }
+            ],
+            attributes: ['id', 'title', 'description', 'date', 'awards'],
+            order: ['date']
+        });
+
+        return res.json(hackathon);
     
+    };
+
     /*
     * Create a Hackathon
     */
@@ -25,7 +48,7 @@ class HackathonController {
             date: Yup.date().required(),
             awards: Yup.number().required(),
             banner_id: Yup.number().required(),
-        })
+        });
 
 
         if(!(await schema.isValid(req.body))) 
@@ -102,14 +125,23 @@ class HackathonController {
 
         const hackathon = await Hackathon.findByPk(id);
 
-        
+        /*
+        * Check if user is the organizer's Hackathon.
+        */
 
         if(hackathon.organizer_id !== req.userId)
             return res.status(401).json({error: "You don't have permisson to edit this Hackathon"});
         
+        /*
+        *   Check if the hackathon's date has not passed. 
+        */
 
         if(isBefore(hackathon.date, new Date()))
             return res.status(401).json({error: "Hakcathons that have passed cannot be changed."});
+
+        /*
+        *   Check if the edit date has not passed. 
+        */
 
         const { date } = req.body;    
             
@@ -118,6 +150,10 @@ class HackathonController {
         if(isBefore(editHour, new Date())) 
             return res.status(400).json({error: "Past date are not permited."});
 
+        /*
+        *   Edit the hackathon. 
+        */
+
         hackathon.update(req.body);
 
         await hackathon.save();
@@ -125,6 +161,34 @@ class HackathonController {
         return res.json(hackathon);
     };
 
+    /*
+    * Delete a Hackathon.
+    */
+
+    async destroy (req, res) {
+        
+        const { id } = req.params
+        const hackathon = await Hackathon.findByPk(id)
+
+        /*
+        * Check if user is organizer's Hackathon.
+        */
+
+        if(hackathon.organizer_id !== req.userId)
+            return res.status(401).json({error: "You don't have permisson to delete this Hackathon."})
+        
+        /*
+        * Check if the Hackathon date has not passed.
+        */
+
+        if(isBefore(hackathon.date, new Date()))
+            return res.status(401).json({error:"Hakcathons that have passed cannot be delete."})
+        
+        hackathon.destroy()
+
+        return res.json({msg: "Successfully deleted Hackathon."})
+
+    }
 
 };
 
