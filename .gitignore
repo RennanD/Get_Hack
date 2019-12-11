@@ -2,4 +2,3 @@ node_modules
 .env
 *lock
 *-error.log
-ROADMAP.md
