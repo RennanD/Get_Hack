@@ -10,7 +10,7 @@
 [x] Criar rota para upload de arquivos e salvar no banco de dados
 [x] Cadastrar hacakthons com titulo, descrição, data e hora, premiação e banner (Campos obrigatórios) e um campo user_id se relacionando com o organizador do hackathon
 [x] Não será possivel cadastrar hacakthons em datas que ja passaram
-[] Hackathons que ainda não aconteceram poderam ser editados pelo organizador
+[x] Hackathons que ainda não aconteceram poderam ser editados pelo organizador
 [] Criar rota pra listar hackathons do usuário logado
 [] Hackathons que ainda não aconteceram podem ser cancelados (e deletados do banco de dados)
 

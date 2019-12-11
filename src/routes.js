@@ -25,6 +25,7 @@ routes.use(authMiddleware);
 routes.put("/users", UserController.update);
 
 routes.post("/hackathons", HackathonController.store)
+routes.put("/hackathons/:id", HackathonController.update)
 
 
 export default routes;
