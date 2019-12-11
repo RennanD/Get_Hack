@@ -7,7 +7,7 @@
 [x] Criptografe a senha do usuário para segurança.
 [x] Realize a validação dos dados de entrada;
 
-[] Criar rota para upload de arquivos e salvar no banco de dados
+[x] Criar rota para upload de arquivos e salvar no banco de dados
 [] Cadastrar hacktons com titulo, descrição, data e hora e banner (Campos obrigatórios) e um campo user_id se relacionando com o organizador do hackaton
 [] Não será possivel cadastrar hacktons em datas que ja passaram
 [] Hackatons que ainda não aconteceram poderam ser editados pelo organizador
