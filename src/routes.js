@@ -8,6 +8,7 @@ import multerConfig from './config/multer'
 import UserController from "./app/controllers/UserController";
 import SessionController from "./app/controllers/SessionController";
 import FileController from "./app/controllers/FileController";
+import HackathonController from "./app/controllers/HackathonController";
 
 const routes = Router();
 const upload = multer(multerConfig)
@@ -22,6 +23,8 @@ routes.post('/files', upload.single('file'),  FileController.store)
 routes.use(authMiddleware);
 
 routes.put("/users", UserController.update);
+
+routes.post("/hackathons", HackathonController.store)
 
 
 export default routes;
