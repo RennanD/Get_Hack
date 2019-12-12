@@ -1,19 +1,18 @@
-import User from '../models/User';
-import Hackathon from '../models/Hackathon';
+import User from "../models/User";
+import Hackathon from "../models/Hackathon";
 
 class SubscribeController {
-    async store(req, res) {
-        const { id } = req.params;
+  async store(req, res) {
+    const { id } = req.params;
 
-        const hackathon = await Hackathon.findByPk(id)
-        
-        const user = await User.findByPk(req.userId)
+    const hackathon = await Hackathon.findByPk(id);
 
-        await user.update(hackathon)
+    const user = await User.findByPk(req.userId);
 
-        return res.json(hackathon)
+    await user.addHackathon(hackathon);
 
-    }
-};
+    return res.json(hackathon);
+  }
+}
 
 export default new SubscribeController();

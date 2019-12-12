@@ -26,17 +26,16 @@ class UserController {
     if (userExists)
       return res.status(400).json({ error: "User already exists." });
 
-    const { id, name,email } = await User.create(req.body);
+    const { id, name, email } = await User.create(req.body);
 
     return res.json({
       id,
       name,
-      email,
+      email
     });
   }
 
   async update(req, res) {
-
     const schema = Yup.object().shape({
       name: Yup.string(),
       email: Yup.string().email(),
@@ -72,7 +71,7 @@ class UserController {
     return res.json({
       id,
       name,
-      email,
+      email
     });
   }
 }
