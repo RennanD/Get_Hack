@@ -14,10 +14,10 @@
 [x] Criar rota pra listar hackathons do usuário logado
 [x] Hackathons que ainda não aconteceram podem ser cancelados (e deletados do banco de dados)
 
-[] O usuário pode se inscrever em hackathons que não organiza.
-[] O usuário não pode se inscrever em hackathons que já aconteceram
-[] O usuario não pode se inscrer no mesmo hackton duas vezes
-[] O usuário não pode se casdatrar em hackathons que aconteceram no mesmo horário
+[x] O usuário pode se inscrever em hackathons que não organiza.
+[x] O usuário não pode se inscrever em hackathons que já aconteceram
+[x] O usuario não pode se inscrer no mesmo hackton duas vezes
+[x] O usuário não pode se casdatrar em hackathons que aconteceram no mesmo horário
 [] Enviar um e-mail ao organizador toda vez que um usuário novo se inscrever em
 um hackathon
 [] Enviar ao usuário um notificação toda vez que um hackathon for cancelado.
