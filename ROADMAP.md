@@ -18,12 +18,12 @@
 [x] O usuário não pode se inscrever em hackathons que já aconteceram
 [x] O usuario não pode se inscrer no mesmo hackton duas vezes
 [x] O usuário não pode se casdatrar em hackathons que aconteceram no mesmo horário
-[] Enviar um e-mail ao organizador toda vez que um usuário novo se inscrever em
+[x] Enviar um e-mail ao organizador toda vez que um usuário novo se inscrever em
 um hackathon
 
-[] Criar rota para listar hackathons com filtro por data (não por hora),
+[x] Criar rota para listar hackathons com filtro por data (não por hora),
 sendo retornado 10 itens por página, mostrando dados do organizador
-[] Criar rotas para listar hackathons em que o usuário logado está inscrito
-[] Listar apenas hackathons que não passaram ordenados por data
+[x] Listar apenas hackathons que não passaram ordenados por data
+[] Criar rotas para listar hackathons em que o usuário logado está inscrito.
 
 [] Enviar ao usuário um notificação toda vez que um hackathon for cancelado.

@@ -5,7 +5,10 @@ import Hackathon from "../models/Hackathon";
 import Queue from "../../lib/Queue";
 import SubscriptionMail from "../jobs/SubscriptionMail";
 
+
 class SubscriptionController {
+
+
   /**
    *  Subscribe in a Hackathon
    */
@@ -66,6 +69,10 @@ class SubscriptionController {
         .status(400)
         .json({ error: "You are already subscribed to Hackathon" });
 
+    /**
+     * Check if the time matches another Hackahon.
+     */
+        
     const timeConflict = user.hackathons.find(hack => {
       return isEqual(hack.date, hackathon.date);
     });
@@ -82,7 +89,14 @@ class SubscriptionController {
       user
     });
 
-    return res.json(hackathon);
+    const { title, desciption, awards, date } = hackathon
+
+    return res.json({
+      title,
+      desciption,
+      awards,
+      date
+    });
   }
 }
 
