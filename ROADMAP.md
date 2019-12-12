@@ -26,4 +26,3 @@ sendo retornado 10 itens por página, mostrando dados do organizador
 [x] Listar apenas hackathons que não passaram ordenados por data
 [x] Criar rotas para listar hackathons em que o usuário logado está inscrito.
 
-[] Enviar ao usuário um notificação toda vez que um hackathon for cancelado.
