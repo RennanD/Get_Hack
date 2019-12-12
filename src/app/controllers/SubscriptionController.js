@@ -2,6 +2,8 @@ import { isBefore, isEqual } from "date-fns";
 
 import User from "../models/User";
 import Hackathon from "../models/Hackathon";
+import Queue from "../../lib/Queue";
+import SubscriptionMail from "../jobs/SubscriptionMail";
 
 class SubscriptionController {
   /**
@@ -15,6 +17,11 @@ class SubscriptionController {
       include: [
         {
           association: "users"
+        },
+        {
+          model: User,
+          as: "organizer",
+          attributes: ["id", "name", "email"]
         }
       ]
     });
@@ -69,6 +76,11 @@ class SubscriptionController {
       });
 
     await user.addHackathon(hackathon);
+
+    await Queue.add(SubscriptionMail.key, {
+      hackathon,
+      user
+    });
 
     return res.json(hackathon);
   }

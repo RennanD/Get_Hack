@@ -20,9 +20,10 @@
 [x] O usuário não pode se casdatrar em hackathons que aconteceram no mesmo horário
 [] Enviar um e-mail ao organizador toda vez que um usuário novo se inscrever em
 um hackathon
-[] Enviar ao usuário um notificação toda vez que um hackathon for cancelado.
 
 [] Criar rota para listar hackathons com filtro por data (não por hora),
 sendo retornado 10 itens por página, mostrando dados do organizador
 [] Criar rotas para listar hackathons em que o usuário logado está inscrito
 [] Listar apenas hackathons que não passaram ordenados por data
+
+[] Enviar ao usuário um notificação toda vez que um hackathon for cancelado.
