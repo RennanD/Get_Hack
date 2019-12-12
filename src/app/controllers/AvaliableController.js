@@ -1,12 +1,16 @@
 import { Op } from 'sequelize'
 
-import { startOfDay, endOfDay, isAfter, parseISO, startOfHour } from 'date-fns'
+import { startOfDay, endOfDay, isAfter, parseISO, startOfHour, isBefore } from 'date-fns'
 
 import File from "../models/File";
 import User from "../models/User";
 import Hackathon from "../models/Hackathon";
 
 class AvaliableController {
+
+    /**
+     *  List avaliable hackathons 
+     */
 
     async index(req, res){
 
@@ -42,17 +46,18 @@ class AvaliableController {
         });
 
 
+        /**
+         * Check if date not past
+         */
+
         const checkHackthons = hackathons.map(hack => {
             const hourStart = startOfHour(hack.date)
             if(isAfter(hourStart, new Date()))
                 return hack
-            
         })
-
-        const avaliableHackthons = checkHackthons.find( h => h != null)
         
       
-        return res.json(avaliableHackthons);
+        return res.json(checkHackthons);
     }
 
 }

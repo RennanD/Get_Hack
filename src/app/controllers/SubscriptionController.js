@@ -1,6 +1,7 @@
 import { isBefore, isEqual } from "date-fns";
 
 import User from "../models/User";
+import File from "../models/File";
 import Hackathon from "../models/Hackathon";
 import Queue from "../../lib/Queue";
 import SubscriptionMail from "../jobs/SubscriptionMail";
@@ -8,6 +9,33 @@ import SubscriptionMail from "../jobs/SubscriptionMail";
 
 class SubscriptionController {
 
+  async index(req, res) {
+
+    const { hackathons } = await User.findByPk(req.userId,{
+      include: [
+        {
+          association: 'hackathons',
+          attributes: ['id', 'title', 'description','date', 'awards'],
+          include: [
+            {
+              model: User,
+              as: 'organizer',
+              attributes: ['name', 'email']
+            },
+            {
+              model: File,
+              as: 'banner',
+              attributes: ['path', 'url']
+            }
+          ]
+        },
+      ],
+      
+    })
+
+    return res.json(hackathons)
+
+  }
 
   /**
    *  Subscribe in a Hackathon

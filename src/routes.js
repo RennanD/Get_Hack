@@ -36,6 +36,7 @@ routes.delete("/hackathons/:id", HackathonController.destroy);
 // Routes for user see hackathons
 
 routes.get("/hackathons/avaliable", AvaliableController.index)
+routes.get("/hackathons/subscriptions", SubscriptionController.index)
 routes.post("/hackathons/:id/subscribe", SubscriptionController.store);
 
 export default routes;
