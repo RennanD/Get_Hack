@@ -50,12 +50,11 @@ class AvaliableController {
          * Check if date not past
          */
 
-        const checkHackthons = hackathons.map(hack => {
+        const checkHackthons = hackathons.filter(hack => {
             const hourStart = startOfHour(hack.date)
             if(isAfter(hourStart, new Date()))
                 return hack
         })
-        
       
         return res.json(checkHackthons);
     }

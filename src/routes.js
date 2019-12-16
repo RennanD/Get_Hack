@@ -14,9 +14,12 @@ import AvaliableController from "./app/controllers/AvaliableController";
 const routes = Router();
 const upload = multer(multerConfig);
 
+//Authentication routes
 
 routes.post("/users", UserController.store);
 routes.post("/sessions", SessionController.store);
+
+// Updload files
 
 routes.post("/files", upload.single("file"), FileController.store);
 
