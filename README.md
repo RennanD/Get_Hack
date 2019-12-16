@@ -10,13 +10,13 @@ Use the package manager [yarn](https://yarnpkg.com/lang/en/) or npm to install.
 ### Using Yarn, run:
 
 ```bash
-yarn install
+$ yarn install
 ```
 
 ### Using Npm, run:
 
 ```bash
-npm install -i
+$ npm install -i
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ Install the [docker](https://www.docker.com/) to run postgres and redis.
 Now run the commands to start containers.
 
 ```bash
-docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+$ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
 ```
 
 ```bash
