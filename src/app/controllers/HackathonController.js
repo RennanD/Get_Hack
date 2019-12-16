@@ -5,7 +5,6 @@ import Hackathon from "../models/Hackathon";
 import File from "../models/File";
 import User from "../models/User";
 
-
 class HackathonController {
   /*
    * List user's Hackathons.
@@ -163,10 +162,10 @@ class HackathonController {
 
   async destroy(req, res) {
     const { id } = req.params;
-    const hackathon = await Hackathon.findByPk(id,{
+    const hackathon = await Hackathon.findByPk(id, {
       include: [
         {
-          association: 'users'
+          association: "users"
         }
       ]
     });
@@ -188,7 +187,6 @@ class HackathonController {
       return res
         .status(401)
         .json({ error: "Hakcathons that have passed cannot be delete." });
-
 
     hackathon.destroy();
 

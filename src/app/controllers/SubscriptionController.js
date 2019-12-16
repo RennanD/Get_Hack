@@ -6,35 +6,30 @@ import Hackathon from "../models/Hackathon";
 import Queue from "../../lib/Queue";
 import SubscriptionMail from "../jobs/SubscriptionMail";
 
-
 class SubscriptionController {
-
   async index(req, res) {
-
-    const { hackathons } = await User.findByPk(req.userId,{
+    const { hackathons } = await User.findByPk(req.userId, {
       include: [
         {
-          association: 'hackathons',
-          attributes: ['id', 'title', 'description','date', 'awards'],
+          association: "hackathons",
+          attributes: ["id", "title", "description", "date", "awards"],
           include: [
             {
               model: User,
-              as: 'organizer',
-              attributes: ['name', 'email']
+              as: "organizer",
+              attributes: ["name", "email"]
             },
             {
               model: File,
-              as: 'banner',
-              attributes: ['path', 'url']
+              as: "banner",
+              attributes: ["path", "url"]
             }
           ]
-        },
-      ],
-      
-    })
+        }
+      ]
+    });
 
-    return res.json(hackathons)
-
+    return res.json(hackathons);
   }
 
   /**
@@ -100,7 +95,7 @@ class SubscriptionController {
     /**
      * Check if the time matches another Hackahon.
      */
-        
+
     const timeConflict = user.hackathons.find(hack => {
       return isEqual(hack.date, hackathon.date);
     });
@@ -117,7 +112,7 @@ class SubscriptionController {
       user
     });
 
-    const { title, desciption, awards, date } = hackathon
+    const { title, desciption, awards, date } = hackathon;
 
     return res.json({
       title,
