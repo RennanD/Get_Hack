@@ -35,10 +35,10 @@ $ docker run --name some-redis -d redis
 
 ## Usage Routes:
 
-- [Authentication](./docs/AUTH.md)
+- [User](./docs/AUTH.md)
 - [Files](./docs/FILES.md)
-- [Organizer](./docs/ORGANIZER.md)
-- [User](./USER.md)
+- [Hackathons](./docs/ORGANIZER.md)
+- [Subscription](./USER.md)
 
 ## Contributing
 
