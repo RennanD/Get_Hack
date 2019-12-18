@@ -16,7 +16,7 @@ $ yarn install
 ### Using Npm, run:
 
 ```bash
-$ npm install -i
+$ npm install
 ```
 
 ## Usage
