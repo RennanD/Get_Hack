@@ -1,7 +1,15 @@
-# API GET HACK
+<h1 align="center">
+    <img src="./docs/api.svg" width="200px">
+</h1>
 
+<h3 align="center">
+GET HACK - API
+</h3>
+
+<p align="center">
 Get Hack application backend.
 Application developed as a study, the backend is made in node with PostgresSQL.
+</p>
 
 ## Installation
 
