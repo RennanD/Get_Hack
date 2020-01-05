@@ -5,6 +5,22 @@ import { singInFailure, singInSuccess } from './actions';
 import api from '~/services/api';
 import history from '~/services/history';
 
+export function* singUp({ payload }) {
+    const { name, email, password } = payload;
+
+    try {
+        yield call(api.post, '/users', {
+            name,
+            email,
+            password,
+        });
+
+        history.push('/');
+    } catch (err) {
+        yield put(singInFailure());
+    }
+}
+
 export function* singIn({ payload }) {
     const { email, password } = payload;
 
@@ -24,4 +40,7 @@ export function* singIn({ payload }) {
     }
 }
 
-export default all([takeLatest('@auth/SING_IN_REQUEST', singIn)]);
+export default all([
+    takeLatest('@auth/SING_IN_REQUEST', singIn),
+    takeLatest('@auth/SING_UP_REQUEST', singUp),
+]);

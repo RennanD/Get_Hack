@@ -1,3 +1,14 @@
+export function singUpRequest(name, email, password) {
+    return {
+        type: '@auth/SING_UP_REQUEST',
+        payload: {
+            name,
+            email,
+            password,
+        },
+    };
+}
+
 export function singInRequest(email, password) {
     return {
         type: '@auth/SING_IN_REQUEST',
