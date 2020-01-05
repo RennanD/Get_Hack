@@ -15,6 +15,12 @@ export const Content = styled.div`
     max-width: 315px;
     text-align: center;
 
+    img {
+        width: 50%;
+
+        align-self: center;
+    }
+
     form {
         display: flex;
         flex-direction: column;
@@ -44,6 +50,7 @@ export const Content = styled.div`
         button {
             margin: 5px 0 0;
             height: 44px;
+            color: #fefefe;
             background: #2193f6;
             font-weight: bold;
             border-radius: 4px;
