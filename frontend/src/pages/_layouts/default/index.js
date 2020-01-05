@@ -1,7 +1,18 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Wrapper } from './styles';
 
-export default function DefaulLayout() {
-    return <div />;
+import SideBar from '~/components/SideBar';
+import Header from '~/components/Header';
+
+export default function DefaulLayout({ children }) {
+    return (
+        <Wrapper>
+            <SideBar />
+            <div style={{ flex: 1 }}>
+                <Header />
+                {children}
+            </div>
+        </Wrapper>
+    );
 }
