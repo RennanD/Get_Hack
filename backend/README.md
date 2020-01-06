@@ -46,7 +46,7 @@ $ docker run --name some-redis -d redis
 - [User](./docs/AUTH.md)
 - [Files](./docs/FILES.md)
 - [Hackathons](./docs/ORGANIZER.md)
-- [Subscription](./USER.md)
+- [Subscription](./docs/USER.md)
 
 ## Contributing
 

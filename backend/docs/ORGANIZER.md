@@ -12,7 +12,7 @@ NO BODY
 
 ### HEADERS
 
-Authorizaton: JSONWEBTOKEN
+Authorization: Bearer token
 
 ### RESPONSE
 
@@ -43,7 +43,7 @@ JSON
 
 ### HEADERS
 
-Authorizaton: JSONWEBTOKEN
+Authorization: Bearer token
 
 ### REQUEST
 
@@ -87,14 +87,14 @@ JSON
 
 ### HEADERS
 
-Authorizaton: JSONWEBTOKEN
+Authorization: Bearer token
 
 ### REQUEST
 
 ```json
 {
-  "title": "Hackathon Amazon SES",
-  "description": "Criar uma aplicação que consome a plataforma SES da Amazon",
+  "title": "Hackathon exemple",
+  "description": "Create a api with micro services",
   "date": "2019-12-13T18:00:00-03:00",
   "banner_id": 5,
   "awards": 1000
@@ -106,8 +106,8 @@ Authorizaton: JSONWEBTOKEN
 ```json
 {
   "id": 14,
-  "title": "Hackathon Amazon SES",
-  "description": "Criar uma aplicação que consome a plataforma SES da Amazon",
+  "title": "Hackathon exemple",
+  "description": "Create a api with micro services",
   "date": "2019-12-13T21:00:00.000Z",
   "awards": 1000,
   "createdAt": "2019-12-13T14:19:09.262Z",
@@ -127,7 +127,7 @@ NO BODY
 
 ### HEADERS
 
-Authorizaton: JSONWEBTOKEN
+Authorization: Bearer token
 
 ### RESPONSE
 

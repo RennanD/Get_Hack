@@ -69,6 +69,10 @@ Update the user informations.
 
 JSON
 
+### HEADERS
+
+Authorization: Bearer token
+
 ### REQUEST
 
 ```json
