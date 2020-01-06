@@ -16,7 +16,7 @@ date
 
 ### HEADERS
 
-Authorizaton: JSONWEBTOKEN
+Authorization: Bearer token
 
 ### RESPONSE
 
@@ -55,7 +55,7 @@ NO BODY
 
 ### HEADERS
 
-Authorizaton: JSONWEBTOKEN
+Authorization: Bearer token
 
 ### RESPONSE
 
@@ -94,7 +94,7 @@ NO BODY
 
 ### HEADERS
 
-Authorizaton: JSONWEBTOKEN
+Authorization: Bearer token
 
 ### RESPONSE
 
