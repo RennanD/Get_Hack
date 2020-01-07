@@ -12,17 +12,14 @@ export default function SideBar() {
                 <div>
                     <Link to="/dashboard">
                         <FaHome size={32} color="#eee" />
-                        <p>Dashboard</p>
                     </Link>
 
                     <Link to="/dashboard">
                         <FaEdit size={32} color="#eee" />
-                        <p>Adicionar</p>
                     </Link>
 
                     <Link to="/dashboard">
                         <FaUser size={32} color="#eee" />
-                        <p>Meu Perfil</p>
                     </Link>
                 </div>
 

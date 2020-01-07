@@ -2,8 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     background: #2193f6;
-    width: 125px;
+    width: 70px;
     height: 100%;
+    transition: width 0.4s;
+    position: fixed;
+
+    &:hover {
+        width: 120px;
+    }
 
     nav {
         padding: 30px 5px;
@@ -25,6 +31,11 @@ export const Container = styled.div`
                 font-weight: bold;
                 font-size: 16px;
                 margin-bottom: 15px;
+                opacity: 0.7;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
 

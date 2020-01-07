@@ -6,8 +6,11 @@ import authConfig from "../../config/auth";
 export default async (req, res, next) => {
   const authHeaders = req.headers.authorization;
 
-  if (!authHeaders)
+  if (!authHeaders) {
+    console.log("Token not provided.");
+
     return res.status(401).json({ error: "Token not provided." });
+  }
 
   const [, token] = authHeaders.split(" ");
 
@@ -18,6 +21,8 @@ export default async (req, res, next) => {
 
     return next();
   } catch (err) {
+    console.log(err);
+
     return res.status(401).json({ error: "Ivadid Token" });
   }
 };
