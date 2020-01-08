@@ -1,13 +1,17 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { MdCancel, MdEdit } from 'react-icons/md';
 
 import { Container, Banner, ActionButton } from './styles';
 
+import { hackCancel } from '~/store/modules/hackathon/actions';
+
 export default function Details() {
     const hackathon = useSelector(state => state.hackathon.details);
+
+    const dispatch = useDispatch();
 
     return (
         <Container>
@@ -20,7 +24,10 @@ export default function Details() {
                             <MdEdit size={16} color="#fefefe" />
                             Editar
                         </ActionButton>
-                        <ActionButton type="button">
+                        <ActionButton
+                            type="button"
+                            onClick={() => dispatch(hackCancel(hackathon.id))}
+                        >
                             <MdCancel size={16} color="#fefefe" />
                             Cancelar
                         </ActionButton>

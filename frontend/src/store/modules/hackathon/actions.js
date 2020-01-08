@@ -11,3 +11,10 @@ export function hackDetailSuccess(data) {
         payload: { data },
     };
 }
+
+export function hackCancel(id) {
+    return {
+        type: '@hackathon/CANCEL',
+        payload: { id },
+    };
+}

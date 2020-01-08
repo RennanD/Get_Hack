@@ -1,5 +1,7 @@
 import { all, call, takeLatest, put } from 'redux-saga/effects';
 
+import { toast } from 'react-toastify';
+
 import { hackDetailSuccess } from './actions';
 
 import api from '~/services/api';
@@ -15,4 +17,21 @@ export function* showDetails({ payload }) {
     history.push('/hackathons/details');
 }
 
-export default all([takeLatest('@hackathon/DETAIL_REQUEST', showDetails)]);
+export function* cancelHackathon({ payload }) {
+    try {
+        const { id } = payload;
+
+        const response = yield call(api.delete, `/hackathons/${id}`);
+
+        toast.success(response.data.msg);
+
+        history.push('/dashboard');
+    } catch ({ response }) {
+        toast.error(response.data.error);
+    }
+}
+
+export default all([
+    takeLatest('@hackathon/DETAIL_REQUEST', showDetails),
+    takeLatest('@hackathon/CANCEL', cancelHackathon),
+]);
