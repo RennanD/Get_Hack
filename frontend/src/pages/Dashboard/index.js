@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { format, parseISO } from 'date-fns';
+import { format, parseISO, isBefore } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
 import { MdDateRange, MdLink, MdDvr } from 'react-icons/md';
@@ -30,7 +30,10 @@ export default function Dashboard() {
                         locale: pt,
                     }
                 ),
+                past: isBefore(parseISO(h.date), new Date()),
             }));
+
+            console.tron.log(data);
 
             setHackathons(data);
         }
@@ -41,7 +44,7 @@ export default function Dashboard() {
         <Container>
             <ul>
                 {hackathons.map(hackathon => (
-                    <Card key={String(hackathon.id)}>
+                    <Card key={String(hackathon.id)} past={hackathon.past}>
                         <img src={hackathon.banner.url} alt={hackathon.title} />
                         <footer>
                             <span>
@@ -52,15 +55,19 @@ export default function Dashboard() {
                                 <MdDateRange size={20} color="#fefefe" />
                                 {hackathon.formattedDate}
                             </span>
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    dispatch(hackDetailRequest(hackathon.id))
-                                }
-                            >
-                                <MdLink size={20} color="#fefefe" />
-                                Vizualisar
-                            </button>
+                            {!hackathon.past && (
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        dispatch(
+                                            hackDetailRequest(hackathon.id)
+                                        )
+                                    }
+                                >
+                                    <MdLink size={20} color="#fefefe" />
+                                    Vizualisar
+                                </button>
+                            )}
                         </footer>
                     </Card>
                 ))}

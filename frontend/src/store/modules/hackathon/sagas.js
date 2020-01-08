@@ -2,7 +2,7 @@ import { all, call, takeLatest, put } from 'redux-saga/effects';
 
 import { toast } from 'react-toastify';
 
-import { hackDetailSuccess } from './actions';
+import { hackDetailSuccess, hackUpdateSuccess } from './actions';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -12,9 +12,29 @@ export function* showDetails({ payload }) {
 
     const response = yield call(api.get, `/hackathons/${id}/details`);
 
-    yield put(hackDetailSuccess(response.data));
+    const details = Object.assign({
+        ...response.data,
+        dateFomatted: new Date(response.data.date),
+        today: new Date(),
+    });
+
+    yield put(hackDetailSuccess(details));
 
     history.push('/hackathons/details');
+}
+
+export function* updateHackathon({ payload }) {
+    const { data } = payload;
+
+    try {
+        const response = yield call(api.put, `/hackathons/${data.id}`, data);
+
+        toast.success('Dados alterado com sucesso');
+
+        yield put(hackUpdateSuccess(response.data));
+    } catch ({ response }) {
+        toast.error(response.data.error);
+    }
 }
 
 export function* cancelHackathon({ payload }) {
@@ -33,5 +53,6 @@ export function* cancelHackathon({ payload }) {
 
 export default all([
     takeLatest('@hackathon/DETAIL_REQUEST', showDetails),
+    takeLatest('@hackathon/UPDATE_REQUEST', updateHackathon),
     takeLatest('@hackathon/CANCEL', cancelHackathon),
 ]);

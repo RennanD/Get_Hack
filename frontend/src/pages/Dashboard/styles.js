@@ -36,6 +36,8 @@ export const Card = styled.li`
     background: #222;
     max-width: 300px;
 
+    opacity: ${props => (props.past ? 0.4 : 1)};
+
     img {
         height: 70%;
         max-height: 150px;

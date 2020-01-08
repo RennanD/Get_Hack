@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@material-ui/pickers": "^3.2.8",
         "@rocketseat/unform": "^1.6.1",
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
@@ -14,6 +15,8 @@
         "immer": "^5.1.0",
         "polished": "^3.4.2",
         "react": "^16.12.0",
+        "react-date-picker": "^7.10.0",
+        "react-datepicker": "^2.10.1",
         "react-dom": "^16.12.0",
         "react-icons": "^3.8.0",
         "react-redux": "^7.1.3",
