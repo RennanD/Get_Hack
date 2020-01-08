@@ -32,6 +32,7 @@ routes.put("/users", UserController.update);
 // Organizer hackathons routes
 
 routes.get("/hackathons", HackathonController.index);
+routes.get("/hackathons/:id/details", HackathonController.show);
 routes.post("/hackathons", HackathonController.store);
 routes.put("/hackathons/:id", HackathonController.update);
 routes.delete("/hackathons/:id", HackathonController.destroy);

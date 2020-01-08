@@ -1,5 +1,7 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
+import { toast } from 'react-toastify';
+
 import { singInFailure, singInSuccess } from './actions';
 
 import api from '~/services/api';
@@ -32,10 +34,13 @@ export function* singIn({ payload }) {
 
         const { token, user } = response.data;
 
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+
         yield put(singInSuccess(token, user));
+
         history.push('/dashboard');
-    } catch (err) {
-        console.tron.error(err);
+    } catch ({ response }) {
+        toast.error(response.data.error);
         yield put(singInFailure());
     }
 }
@@ -44,8 +49,6 @@ export function setToken({ payload }) {
     if (!payload) return;
 
     const { token } = payload.auth;
-
-    console.tron.log(token);
 
     if (token) {
         api.defaults.headers.Authorization = `Bearer ${token}`;

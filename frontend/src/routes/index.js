@@ -7,6 +7,7 @@ import SingIn from '~/pages/SingIn';
 import SingUp from '~/pages/SingUp';
 
 import Dashboard from '~/pages/Dashboard';
+import Details from '~/pages/Details';
 
 export default function Routes() {
     return (
@@ -15,6 +16,7 @@ export default function Routes() {
             <Route path="/singup" component={SingUp} />
 
             <Route path="/dashboard" component={Dashboard} isPrivate />
+            <Route path="/hackathons/details" component={Details} isPrivate />
         </Switch>
     );
 }

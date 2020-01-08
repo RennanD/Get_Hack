@@ -7,8 +7,18 @@ export const Container = styled.div`
     transition: width 0.4s;
     position: fixed;
 
+    span {
+        font-size: 0;
+        transition: font-size 0.2s;
+        margin-left: 5px;
+    }
+
     &:hover {
-        width: 120px;
+        width: 150px;
+
+        span {
+            font-size: 14px;
+        }
     }
 
     nav {
@@ -26,6 +36,8 @@ export const Container = styled.div`
             align-items: center;
 
             a {
+                display: flex;
+                align-items: flex-end;
                 text-align: center;
                 color: #fefefe;
                 font-weight: bold;

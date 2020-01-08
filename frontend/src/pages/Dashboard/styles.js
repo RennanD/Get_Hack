@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
     max-width: 900px;
@@ -37,6 +38,7 @@ export const Card = styled.li`
 
     img {
         height: 70%;
+        max-height: 150px;
         width: 100%;
         border-radius: 4px 4px 0 0;
     }
@@ -62,6 +64,25 @@ export const Card = styled.li`
             svg {
                 margin-right: 7px;
             }
+        }
+    }
+    button {
+        padding: 0;
+        margin-top: 7px;
+        display: flex;
+        border: 0;
+        align-items: center;
+        background: none;
+        color: #2193f6;
+        font-size: 16px;
+        font-weight: bold;
+
+        &:hover {
+            color: ${darken(0.05, '#2193f6')};
+        }
+
+        svg {
+            margin-right: 7px;
         }
     }
 `;

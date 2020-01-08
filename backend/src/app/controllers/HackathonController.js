@@ -12,7 +12,7 @@ class HackathonController {
 
   async index(req, res) {
     try {
-      const hackathon = await Hackathon.findAll({
+      const hackathons = await Hackathon.findAll({
         where: { organizer_id: req.userId },
         include: [
           {
@@ -21,14 +21,39 @@ class HackathonController {
             attributes: ["id", "path", "url"]
           }
         ],
-        attributes: ["id", "title", "description", "date", "awards"],
+        attributes: ["id", "title", "date"],
         order: ["date"]
       });
 
-      return res.json(hackathon);
+      return res.json(hackathons);
     } catch (error) {
       console.log(error);
     }
+  }
+
+  /*
+   * Show a Hackathon details
+   */
+
+  async show(req, res) {
+    const { id } = req.params;
+
+    const hackathon = await Hackathon.findByPk(id, {
+      include: [
+        {
+          model: User,
+          as: "organizer",
+          attributes: ["id", "name"]
+        },
+        {
+          model: File,
+          as: "banner",
+          attributes: ["id", "path", "url"]
+        }
+      ]
+    });
+
+    return res.json(hackathon);
   }
 
   /*

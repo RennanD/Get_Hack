@@ -1,30 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { FaHome, FaEdit, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { IoMdPower } from 'react-icons/io';
+import { MdPersonPin, MdEventNote, MdAddBox } from 'react-icons/md';
 
 import { Container } from './styles';
 
 export default function SideBar() {
     return (
-        <Container>
+        <Container opened={false}>
             <nav>
                 <div>
                     <Link to="/dashboard">
-                        <FaHome size={32} color="#eee" />
+                        <MdEventNote size={32} color="#eee" />
+                        <span>Dashboard</span>
                     </Link>
 
                     <Link to="/dashboard">
-                        <FaEdit size={32} color="#eee" />
+                        <MdAddBox size={32} color="#eee" />
+                        <span>Adicionar</span>
                     </Link>
 
                     <Link to="/dashboard">
-                        <FaUser size={32} color="#eee" />
+                        <MdPersonPin size={32} color="#eee" />
+                        <span>Configurar</span>
                     </Link>
                 </div>
 
                 <button type="button">
-                    <FaSignOutAlt size={20} color="#eee" /> <span>Sair</span>
+                    <IoMdPower size={20} color="#eee" /> <span>Sair</span>
                 </button>
             </nav>
         </Container>
