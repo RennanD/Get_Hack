@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Form, Input, Textarea } from '@rocketseat/unform';
+import { Form, Textarea } from '@rocketseat/unform';
 
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -17,12 +17,14 @@ import {
 
 import { formatPrice } from '~/utils/format';
 
-import { Container, Banner, ActionButton, Date } from './styles';
+import { Container, Banner, ActionButton, TextInput } from './styles';
 
 import {
     hackCancel,
     hackUpdateRequest,
 } from '~/store/modules/hackathon/actions';
+
+import DateInput from '~/components/DateInput';
 
 /**
  *  Init my component
@@ -36,7 +38,6 @@ export default function Details() {
     const hackathon = useSelector(state => state.hackathon.details);
 
     const [isEdit, setIsEdit] = useState(false);
-    const [date, setDate] = useState(hackathon.dateFomatted);
 
     const priceFormatted = formatPrice(hackathon.awards);
 
@@ -66,7 +67,7 @@ export default function Details() {
         return (
             <Container>
                 <Form initialData={hackathon} onSubmit={handleSubmit}>
-                    <Input name="title" placeholder="Título do hackathon" />
+                    <TextInput name="title" placeholder="Título do hackathon" />
                     <Textarea
                         name="description"
                         placeholder="Descrição do hackathon"
@@ -74,18 +75,8 @@ export default function Details() {
 
                     <hr />
 
-                    <div>
-                        <Date
-                            selected={date}
-                            onChange={newDate => setDate(newDate)}
-                            locale="pt"
-                            showTimeSelect
-                            timeFormat="p"
-                            timeIntervals={15}
-                            dateFormat="dd 'de' MMM 'de' yyyy 'às' HH:mm "
-                        />
-                        <Input name="awards" type="number" />
-                    </div>
+                    <TextInput name="awards" />
+                    <DateInput />
 
                     <div>
                         <ActionButton type="submit" edit>

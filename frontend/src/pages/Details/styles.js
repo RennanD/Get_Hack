@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import DatePicker from 'react-date-picker';
+import { Input } from '@rocketseat/unform';
 
 export const Container = styled.div`
     max-width: 800px;
@@ -37,20 +37,6 @@ export const Container = styled.div`
         margin-top: 30px;
         justify-content: center;
 
-        input {
-            padding: 0 10px;
-            background: #444;
-            border: 0;
-            border-radius: 4px;
-            height: 44px;
-            color: #fefefe;
-            margin: 0 0 10px;
-
-            &::placeholder {
-                color: rgba(255, 255, 255, 0.7);
-            }
-        }
-
         textarea {
             background: #444;
             padding: 10px;
@@ -76,15 +62,7 @@ export const Container = styled.div`
 
         div {
             display: flex;
-
-            input {
-                width: 50%;
-                align-self: stretch;
-
-                & + input {
-                    margin-left: 10px;
-                }
-            }
+            justify-content: stretch;
         }
 
         button {
@@ -140,6 +118,20 @@ export const Banner = styled.div`
     }
 `;
 
+export const TextInput = styled(Input)`
+    padding: 0 10px;
+    background: #444;
+    border: 0;
+    border-radius: 4px;
+    height: 44px;
+    color: #fefefe;
+    margin: 0 0 10px;
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+`;
+
 export const ActionButton = styled.button`
     display: flex;
     align-items: center;
@@ -161,15 +153,4 @@ export const ActionButton = styled.button`
     svg {
         margin-right: 4px;
     }
-`;
-
-export const Date = styled(DatePicker)`
-    padding: 0 10px;
-    background: #444;
-    border: 0;
-    border-radius: 4px;
-    height: 44px;
-    color: #fefefe;
-    margin: 0 0 10px;
-    margin-left: 10px;
 `;
