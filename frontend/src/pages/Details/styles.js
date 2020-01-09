@@ -63,6 +63,10 @@ export const Container = styled.div`
         div {
             display: flex;
             justify-content: stretch;
+
+            input {
+                width: 50%;
+            }
         }
 
         button {

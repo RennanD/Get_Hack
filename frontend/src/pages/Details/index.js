@@ -75,8 +75,10 @@ export default function Details() {
 
                     <hr />
 
-                    <TextInput name="awards" />
-                    <DateInput />
+                    <div>
+                        <TextInput name="awards" />
+                        <DateInput eventDate={hackathon.dateFomatted} />
+                    </div>
 
                     <div>
                         <ActionButton type="submit" edit>
