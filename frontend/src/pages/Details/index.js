@@ -43,10 +43,6 @@ export default function Details() {
     const dispatch = useDispatch();
 
     /**
-     * Declare funtions
-     */
-
-    /**
      * Render this component
      */
 

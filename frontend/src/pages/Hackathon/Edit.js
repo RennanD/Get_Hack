@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { Form, Textarea } from '@rocketseat/unform';
 
 import { Container, Date, ActionButton, TextInput } from './styles';
-import { hackUpdateRequest } from '~/store/modules/hackathon/actions';
 
-export default function HackForm({ hackathon, actionForm }) {
-    const [date, setDate] = useState(hackathon.dateFormatted);
+export default function EditHackathon() {
+    const [date, setDate] = useState();
 
-    const dispatch = useDispatch();
-
-    function handleSubmit(data) {
-        if (actionForm === 'edit') {
-            dispatch(hackUpdateRequest(data));
-        }
-    }
+    function handleSubmit() {}
 
     return (
         <Container>
-            <Form initialData={hackathon} onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <TextInput name="title" placeholder="Título do hackathon" />
                 <Textarea
                     name="description"

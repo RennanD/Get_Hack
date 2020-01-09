@@ -16,7 +16,7 @@ export default function SideBar() {
                         <span>Dashboard</span>
                     </Link>
 
-                    <Link to="/dashboard">
+                    <Link to="/hackathons/new">
                         <MdAddBox size={32} color="#eee" />
                         <span>Adicionar</span>
                     </Link>

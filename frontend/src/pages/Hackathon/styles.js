@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import { Input } from '@rocketseat/unform';
 
-import DatePiker from 'react-datepicker';
-
 export const Container = styled.div`
     max-width: 800px;
     margin: 0px auto;
@@ -128,20 +126,4 @@ export const ActionButton = styled.button`
     svg {
         margin-right: 4px;
     }
-`;
-
-export const Date = styled(DatePiker)`
-    padding: 0 10px;
-    background: #444;
-    border: 0;
-    border-radius: 4px;
-    height: 44px;
-    color: #fefefe;
-    margin: 0 0 10px;
-
-    &::placeholder {
-        color: rgba(255, 255, 255, 0.7);
-    }
-    width: 100%;
-    min-width: 300px;
 `;

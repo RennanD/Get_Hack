@@ -8,6 +8,27 @@ import { hackDetailSuccess, hackUpdateSuccess } from './actions';
 import api from '~/services/api';
 import history from '~/services/history';
 
+export function* addHackathon({ payload }) {
+    const { data } = payload;
+
+    try {
+        const hackathon = Object.assign({
+            ...data,
+            banner_id: 9,
+        });
+
+        console.tron.log(hackathon);
+
+        yield call(api.post, '/hackathons', hackathon);
+
+        toast.success('Hackathon cadastrado com sucesso.');
+
+        history.push('/dashboard');
+    } catch ({ response }) {
+        toast.error(response.data.error);
+    }
+}
+
 export function* showDetails({ payload }) {
     const { id } = payload;
 
@@ -52,6 +73,7 @@ export function* cancelHackathon({ payload }) {
 }
 
 export default all([
+    takeLatest('@hackathon/ADD_REQUEST', addHackathon),
     takeLatest('@hackathon/DETAIL_REQUEST', showDetails),
     takeLatest('@hackathon/UPDATE_REQUEST', updateHackathon),
     takeLatest('@hackathon/CANCEL', cancelHackathon),

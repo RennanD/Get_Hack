@@ -1,3 +1,10 @@
+export function hackAddRequest(data) {
+    return {
+        type: '@hackathon/ADD_REQUEST',
+        payload: { data },
+    };
+}
+
 export function hackDetailRequest(id) {
     return {
         type: '@hackathon/DETAIL_REQUEST',
