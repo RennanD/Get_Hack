@@ -8,6 +8,7 @@ import { Container, ActionButton, TextInput } from './styles';
 import { hackAddRequest } from '~/store/modules/hackathon/actions';
 
 import SelectDate from '~/components/SelectDate';
+import BannerInput from '~/components/BannerInput';
 
 export default function NewHackathon() {
     const dispatch = useDispatch();
@@ -19,6 +20,8 @@ export default function NewHackathon() {
     return (
         <Container>
             <Form onSubmit={handleSubmit}>
+                <BannerInput name="banner_id" />
+
                 <TextInput name="title" placeholder="Título do hackathon" />
                 <Textarea
                     name="description"

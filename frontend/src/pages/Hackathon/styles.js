@@ -85,7 +85,7 @@ export const Container = styled.div`
         }
 
         button {
-            margin-top: 30px;
+            margin: 20px 0;
             opacity: 0.9;
         }
     }
@@ -121,9 +121,5 @@ export const ActionButton = styled.button`
 
     &:hover {
         opacity: 1;
-    }
-
-    svg {
-        margin-right: 4px;
     }
 `;

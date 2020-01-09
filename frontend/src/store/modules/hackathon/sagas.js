@@ -12,14 +12,7 @@ export function* addHackathon({ payload }) {
     const { data } = payload;
 
     try {
-        const hackathon = Object.assign({
-            ...data,
-            banner_id: 9,
-        });
-
-        console.tron.log(hackathon);
-
-        yield call(api.post, '/hackathons', hackathon);
+        yield call(api.post, '/hackathons', data);
 
         toast.success('Hackathon cadastrado com sucesso.');
 
