@@ -33,8 +33,6 @@ export default function Dashboard() {
                 past: isBefore(parseISO(h.date), new Date()),
             }));
 
-            console.tron.log(data);
-
             setHackathons(data);
         }
         loadHackathons();

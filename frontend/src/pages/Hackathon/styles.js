@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+import { Input } from '@rocketseat/unform';
+
+import DatePiker from 'react-datepicker';
+
 export const Container = styled.div`
     max-width: 800px;
     margin: 0px auto;
@@ -89,49 +93,17 @@ export const Container = styled.div`
     }
 `;
 
-export const Banner = styled.div`
-    padding: 20px 0;
+export const TextInput = styled(Input)`
+    padding: 0 10px;
+    background: #444;
+    border: 0;
+    border-radius: 4px;
+    height: 44px;
+    color: #fefefe;
+    margin: 0 0 10px;
 
-    header {
-        display: flex;
-        height: 60px;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 10px;
-
-        div {
-            margin-left: 10px;
-            padding-left: 10px;
-            border-left: 1px solid #666;
-
-            margin-right: 10px;
-            padding-right: 10px;
-            border-right: 1px solid #666;
-        }
-
-        strong {
-            color: #fefefe;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-
-            svg {
-                margin-right: 5px;
-            }
-        }
-
-        aside {
-            display: flex;
-            height: 100%;
-            padding: 20px 0;
-            align-items: center;
-        }
-    }
-
-    img {
-        width: 100%;
-        max-height: 350px;
-        border-radius: 4px;
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
     }
 `;
 
@@ -156,4 +128,20 @@ export const ActionButton = styled.button`
     svg {
         margin-right: 4px;
     }
+`;
+
+export const Date = styled(DatePiker)`
+    padding: 0 10px;
+    background: #444;
+    border: 0;
+    border-radius: 4px;
+    height: 44px;
+    color: #fefefe;
+    margin: 0 0 10px;
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    width: 100%;
+    min-width: 300px;
 `;

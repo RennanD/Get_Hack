@@ -1,4 +1,5 @@
 import { all, call, takeLatest, put } from 'redux-saga/effects';
+import { parseISO } from 'date-fns';
 
 import { toast } from 'react-toastify';
 
@@ -14,8 +15,7 @@ export function* showDetails({ payload }) {
 
     const details = Object.assign({
         ...response.data,
-        dateFomatted: new Date(response.data.date),
-        today: new Date(),
+        dateFormatted: parseISO(response.data.date),
     });
 
     yield put(hackDetailSuccess(details));
