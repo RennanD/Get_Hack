@@ -13,11 +13,11 @@ export const Container = styled.div`
         color: #2193f6;
         margin-bottom: 10px;
     }
-
     span {
-        color: #fefefe;
-        font-size: 18px;
-        margin-top: 10px;
+        color: #fb6f91;
+        align-self: flex-start;
+        margin: 0 0 10px;
+        font-weight: bold;
     }
 
     p {

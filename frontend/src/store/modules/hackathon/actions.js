@@ -21,7 +21,7 @@ export function hackDetailSuccess(data) {
 
 export function hackUpdateRequest(data) {
     return {
-        type: '@hackathon/UPDADE_REQUEST',
+        type: '@hackathon/UPDATE_REQUEST',
         payload: { data },
     };
 }

@@ -23,13 +23,13 @@ export function* addHackathon({ payload }) {
 }
 
 export function* showDetails({ payload }) {
-    const { id } = payload;
+    const { id: hackId } = payload;
 
-    const response = yield call(api.get, `/hackathons/${id}/details`);
+    const response = yield call(api.get, `/hackathons/${hackId}/details`);
 
     const details = Object.assign({
         ...response.data,
-        dateFormatted: parseISO(response.data.date),
+        date: parseISO(response.data.date),
     });
 
     yield put(hackDetailSuccess(details));
@@ -42,10 +42,11 @@ export function* updateHackathon({ payload }) {
 
     try {
         const response = yield call(api.put, `/hackathons/${data.id}`, data);
-
+        console.tron.log(response);
         toast.success('Dados alterado com sucesso');
 
         yield put(hackUpdateSuccess(response.data));
+        history.push('/hackathons/details');
     } catch ({ response }) {
         toast.error(response.data.error);
     }

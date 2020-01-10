@@ -10,8 +10,10 @@ export default function BannerInput() {
      * Declare consts
      */
 
-    const [thumbnail, setThumbnail] = useState(null);
     const { defaultValue, registerField } = useField('banner');
+    const [thumbnail, setThumbnail] = useState(
+        defaultValue && defaultValue.url
+    );
     const [file, setFile] = useState(defaultValue && defaultValue.id);
 
     const ref = useRef();
@@ -61,7 +63,11 @@ export default function BannerInput() {
                     data-file={file}
                     ref={ref}
                 />
-                <Icon size={24} color="rgba(255,255,255,0.6)" />
+                <Icon
+                    hasThumb={!!thumbnail}
+                    size={24}
+                    color="rgba(255,255,255,0.6)"
+                />
             </Label>
         </Container>
     );

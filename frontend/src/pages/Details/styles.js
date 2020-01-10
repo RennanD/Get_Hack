@@ -31,32 +31,17 @@ export const Container = styled.div`
     }
 
     form {
+        margin: 0;
         display: flex;
         flex-direction: column;
-        margin-top: 30px;
         justify-content: center;
 
         input {
             padding: 0 10px;
-            background: #444;
+            background: none;
             border: 0;
-            border-radius: 4px;
+            border-bottom: 1px solid #444;
             height: 44px;
-            color: #fefefe;
-            margin: 0 0 10px;
-
-            &::placeholder {
-                color: rgba(255, 255, 255, 0.7);
-            }
-        }
-
-        textarea {
-            background: #444;
-            padding: 10px;
-            border: 0;
-            font-size: 16px;
-            border-radius: 4px;
-            height: 140px;
             color: #fefefe;
             margin: 0 0 10px;
 
@@ -73,18 +58,16 @@ export const Container = styled.div`
             margin-top: 10px;
         }
 
-        aside {
-            display: flex;
-
-            input {
-                width: 100%;
-                margin-right: 10px;
-            }
-        }
-
         button {
             margin-top: 30px;
             opacity: 0.9;
+        }
+        aside {
+            display: flex;
+            height: 100%;
+            padding: 20px 0;
+            align-items: center;
+            justify-content: center;
         }
     }
 `;
@@ -97,7 +80,7 @@ export const Banner = styled.div`
         height: 60px;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
 
         div {
             margin-left: 10px;
@@ -125,6 +108,7 @@ export const Banner = styled.div`
             height: 100%;
             padding: 20px 0;
             align-items: center;
+            justify-content: center;
         }
     }
 
