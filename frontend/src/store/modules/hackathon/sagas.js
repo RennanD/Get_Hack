@@ -1,9 +1,8 @@
 import { all, call, takeLatest, put } from 'redux-saga/effects';
-import { parseISO } from 'date-fns';
 
 import { toast } from 'react-toastify';
 
-import { hackDetailSuccess, hackUpdateSuccess } from './actions';
+import { hackDetailSuccess } from './actions';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -27,12 +26,7 @@ export function* showDetails({ payload }) {
 
     const response = yield call(api.get, `/hackathons/${hackId}/details`);
 
-    const details = Object.assign({
-        ...response.data,
-        date: parseISO(response.data.date),
-    });
-
-    yield put(hackDetailSuccess(details));
+    yield put(hackDetailSuccess(response.data));
 
     history.push('/hackathons/details');
 }
@@ -41,11 +35,14 @@ export function* updateHackathon({ payload }) {
     const { data } = payload;
 
     try {
-        const response = yield call(api.put, `/hackathons/${data.id}`, data);
-        console.tron.log(response);
+        yield call(api.put, `/hackathons/${data.id}`, data);
+
+        const response = yield call(api.get, `/hackathons/${data.id}/details`);
+
+        yield put(hackDetailSuccess(response.data));
+
         toast.success('Dados alterado com sucesso');
 
-        yield put(hackUpdateSuccess(response.data));
         history.push('/hackathons/details');
     } catch ({ response }) {
         toast.error(response.data.error);

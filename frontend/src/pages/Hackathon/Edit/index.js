@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Form, Textarea } from '@rocketseat/unform';
 
 import { useDispatch } from 'react-redux';
 
 import * as Yup from 'yup';
+import { parseISO } from 'date-fns';
 
-import { Container, ActionButton, TextInput } from './styles';
-import { hackAddRequest } from '~/store/modules/hackathon/actions';
+import { Container, ActionButton, TextInput } from '../styles';
+import { hackUpdateRequest } from '~/store/modules/hackathon/actions';
 
 import SelectDate from '~/components/SelectDate';
 import BannerInput from '~/components/BannerInput';
+import api from '~/services/api';
 
-export default function NewHackathon() {
+export default function EditHackathon({ match }) {
+    /**
+     * Declare consts
+     */
+
+    const [state, setState] = useState();
     const dispatch = useDispatch();
     const schema = Yup.object().shape({
         banner_id: Yup.number().required('O hackathon precisa de um banner'),
@@ -26,14 +33,42 @@ export default function NewHackathon() {
         date: Yup.date().required('A data do hackathon é obrigatória'),
     });
 
+    /**
+     * Declare funtions
+     */
+
+    useEffect(() => {
+        async function loadHackathon() {
+            const { id } = match.params;
+            const response = await api.get(`/hackathons/${id}/details`);
+
+            const data = {
+                ...response.data,
+                date: parseISO(response.data.date),
+            };
+
+            setState(data);
+        }
+        loadHackathon();
+    }, [match]);
+
     function handleSubmit(data) {
-        dispatch(hackAddRequest(data));
+        const editHackathon = {
+            ...data,
+            id: match.params.id,
+        };
+
+        dispatch(hackUpdateRequest(editHackathon));
     }
+
+    /**
+     * Render component
+     */
 
     return (
         <Container>
-            <Form schema={schema} onSubmit={handleSubmit}>
-                <BannerInput name="banner_id" />
+            <Form schema={schema} onSubmit={handleSubmit} initialData={state}>
+                {state && <BannerInput name="banner_id" />}
 
                 <TextInput name="title" placeholder="Título do hackathon" />
                 <Textarea
@@ -50,7 +85,7 @@ export default function NewHackathon() {
                         placeholder="Premiação do hackathon"
                     />
 
-                    <SelectDate name="date" />
+                    {state && <SelectDate name="date" />}
                 </aside>
 
                 <aside>

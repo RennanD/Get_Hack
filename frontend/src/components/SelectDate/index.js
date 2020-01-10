@@ -32,8 +32,8 @@ export default function DatePicker({ name }) {
                 showTimeSelect
                 locale={pt}
                 timeFormat="p"
-                timeIntervals={30}
-                dateFormat="Pp"
+                timeIntervals={60}
+                dateFormat="dd 'de' MMM 'de' yyyy '-' HH:mm "
                 timeCaption="time"
                 date-file={selected}
                 placeholderText="Selecione uma data"

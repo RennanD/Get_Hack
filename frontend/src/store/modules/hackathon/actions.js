@@ -26,13 +26,6 @@ export function hackUpdateRequest(data) {
     };
 }
 
-export function hackUpdateSuccess(info) {
-    return {
-        type: '@hackathon/UPDADE_SUCCESS',
-        payload: { info },
-    };
-}
-
 export function hackCancel(id) {
     return {
         type: '@hackathon/CANCEL',

@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Input, Form } from '@rocketseat/unform';
-
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,13 +17,8 @@ import { formatPrice } from '~/utils/format';
 
 import { Container, Banner, ActionButton } from './styles';
 
-import {
-    hackCancel,
-    hackUpdateRequest,
-} from '~/store/modules/hackathon/actions';
-
-import SelectDate from '~/components/SelectDate';
-import BannerInput from '~/components/BannerInput';
+import { hackCancel } from '~/store/modules/hackathon/actions';
+import history from '~/services/history';
 
 /**
  *  Init my component
@@ -35,13 +28,12 @@ export default function Details() {
     /**
      *  Declare consts
      */
-    const [editing, setEditing] = useState(false);
     const hackathon = useSelector(state => state.hackathon.details);
 
     const priceFormatted = formatPrice(hackathon.awards);
 
     const dateFormatted = format(
-        hackathon.date,
+        parseISO(hackathon.date),
         "dd 'de' MMMM 'de' yyyy 'às' HH:mm'h' ",
         {
             locale: ptBR,
@@ -54,55 +46,13 @@ export default function Details() {
      * Declare functions
      */
 
-    function handleEdit(data) {
-        const editHack = Object.assign({
-            ...data,
-            id: hackathon.id,
-        });
-
-        dispatch(hackUpdateRequest(editHack));
-        setEditing(!editing);
+    function handleNavigate() {
+        history.push(`/hackathons/${hackathon.id}/edit`);
     }
 
     /**
      * Render this component
      */
-
-    if (editing)
-        return (
-            <Container>
-                <Form initialData={hackathon} onSubmit={handleEdit}>
-                    <Banner>
-                        <header>
-                            <strong />
-
-                            <aside>
-                                <ActionButton type="submit" edit>
-                                    <MdEdit size={16} color="#fefefe" />
-                                    Salvar edição
-                                </ActionButton>
-                                <ActionButton
-                                    type="button"
-                                    onClick={() => setEditing(!editing)}
-                                >
-                                    <MdCancel size={16} color="#fefefe" />
-                                    Cancelar edição
-                                </ActionButton>
-                            </aside>
-                        </header>
-
-                        <BannerInput name="banner_id" />
-                    </Banner>
-
-                    <Input name="title" />
-
-                    <SelectDate name="date" />
-                    <Input name="awards" type="number" />
-
-                    <Input name="description" />
-                </Form>
-            </Container>
-        );
 
     return (
         <Container>
@@ -117,7 +67,7 @@ export default function Details() {
                         <ActionButton
                             type="button"
                             edit
-                            onClick={() => setEditing(!editing)}
+                            onClick={handleNavigate}
                         >
                             <MdEdit size={16} color="#fefefe" />
                             Editar hackathon

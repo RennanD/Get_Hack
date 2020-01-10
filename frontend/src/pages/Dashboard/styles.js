@@ -51,6 +51,7 @@ export const Card = styled.li`
         justify-content: center;
         padding: 20px;
         height: 30%;
+        margin-top: 5px;
 
         span {
             display: flex;

@@ -17,10 +17,6 @@ export default function hackathon(state = INITIAL_STATE, action) {
                 draft.loading = false;
                 break;
             }
-            case '@hackathon/UPDATE_SUCCESS': {
-                draft.details = action.payload.info;
-                break;
-            }
             default:
         }
     });
