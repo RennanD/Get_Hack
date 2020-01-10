@@ -6,7 +6,7 @@ export default reducers => {
         {
             key: 'gethack',
             storage,
-            whitelist: ['auth', 'hackathon'],
+            whitelist: ['auth', 'hackathon', 'user'],
         },
         reducers
     );
