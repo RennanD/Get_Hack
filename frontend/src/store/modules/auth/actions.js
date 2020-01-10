@@ -34,3 +34,9 @@ export function singInFailure() {
         type: '@auth/SING_IN_FAILURE',
     };
 }
+
+export function singOut() {
+    return {
+        type: '@auth/SING_OUT',
+    };
+}

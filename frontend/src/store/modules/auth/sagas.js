@@ -45,6 +45,10 @@ export function* singIn({ payload }) {
     }
 }
 
+export function singOut() {
+    history.push('/');
+}
+
 export function setToken({ payload }) {
     if (!payload) return;
 
@@ -59,4 +63,5 @@ export default all([
     takeLatest('persist/REHYDRATE', setToken),
     takeLatest('@auth/SING_IN_REQUEST', singIn),
     takeLatest('@auth/SING_UP_REQUEST', singUp),
+    takeLatest('@auth/SING_OUT', singOut),
 ]);
