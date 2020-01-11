@@ -29,7 +29,7 @@ export default function SideBar() {
                         <span>Adicionar</span>
                     </Link>
 
-                    <Link to="/dashboard">
+                    <Link to="/profile">
                         <MdPersonPin size={32} color="#eee" />
                         <span>Configurar</span>
                     </Link>

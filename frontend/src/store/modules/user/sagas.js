@@ -6,7 +6,7 @@ import api from '~/services/api';
 import { updateProfileFailure, updateProfileSuccess } from './action';
 
 export function* updateProfile({ payload }) {
-    const { name, email, avatar_id, ...rest } = payload;
+    const { name, email, avatar_id, ...rest } = payload.data;
 
     try {
         const profile = Object.assign(

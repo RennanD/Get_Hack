@@ -26,7 +26,7 @@ export default function Header() {
                             src={
                                 profile.avatar
                                     ? profile.avatar.url
-                                    : 'https://api.adorable.io/avatars/50/abott@adorable.png'
+                                    : 'https://www.morrealeres.com/morreale/wp-content/uploads/2017/04/placeholder-person.jpg'
                             }
                             alt=""
                         />

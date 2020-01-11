@@ -8,6 +8,7 @@ import SingUp from '~/pages/SingUp';
 
 import Dashboard from '~/pages/Dashboard';
 import Details from '~/pages/Details';
+import Profile from '~/pages/Profile';
 import AddHackathon from '~/pages/Hackathon/New';
 import EditHackathon from '~/pages/Hackathon/Edit';
 
@@ -25,6 +26,7 @@ export default function Routes() {
                 component={EditHackathon}
                 isPrivate
             />
+            <Route path="/profile" component={Profile} isPrivate />
         </Switch>
     );
 }
