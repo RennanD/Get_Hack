@@ -8,7 +8,7 @@ GET HACK - API
 
 <p align="center">
 Get Hack application backend.
-Application developed as a study, the backend is made in node with PostgresSQL.
+Application developed as a study, the backend is made in Node.Js with PostgresSQL.
 </p>
 
 ## Installation
