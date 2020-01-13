@@ -11,6 +11,7 @@ import {
     MdAssignmentInd,
     MdEventAvailable,
     MdLocalAtm,
+    MdLocationOn,
 } from 'react-icons/md';
 
 import { formatPrice } from '~/utils/format';
@@ -90,6 +91,10 @@ export default function Details() {
                 <p>
                     <MdEventAvailable color="#fefefe" size={18} />
                     {dateFormatted}
+                </p>
+                <p>
+                    <MdLocationOn color="#fefefe" size={18} />
+                    {hackathon.address}
                 </p>
                 <p>
                     <MdLocalAtm color="#fefefe" size={18} />

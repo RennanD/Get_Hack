@@ -19,6 +19,9 @@ export default function NewHackathon() {
         title: Yup.string('O título precisa ser um texto').required(
             'O título é obrigatório'
         ),
+        address: Yup.string('O título precisa ser um texto').required(
+            'O endereço é obrigatório'
+        ),
         description: Yup.string('A descrição precisa ser um texto').required(
             'A descrição é obrigatório'
         ),
@@ -40,6 +43,7 @@ export default function NewHackathon() {
                     name="description"
                     placeholder="Descrição do hackathon"
                 />
+                <TextInput name="address" placeholder="Onde vai acontecer" />
 
                 <hr />
 

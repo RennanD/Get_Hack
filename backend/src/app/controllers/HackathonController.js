@@ -61,7 +61,7 @@ class HackathonController {
    */
 
   async store(req, res) {
-    const { title, description, date, banner_id, awards } = req.body;
+    const { title, description, date, banner_id, awards, address } = req.body;
 
     /*
      * Check if body is valid.
@@ -70,6 +70,7 @@ class HackathonController {
     const schema = Yup.object().shape({
       title: Yup.string().required(),
       description: Yup.string().required(),
+      address: Yup.string().required(),
       date: Yup.date().required(),
       awards: Yup.number().required(),
       banner_id: Yup.number().required()
@@ -95,6 +96,7 @@ class HackathonController {
       title,
       description,
       awards,
+      address,
       date,
       banner_id,
       organizer_id: req.userId
@@ -119,6 +121,7 @@ class HackathonController {
       title,
       description,
       awards,
+      address,
       date,
       banner: hackathon.banner,
       organizer: hackathon.organizer
@@ -135,6 +138,7 @@ class HackathonController {
     const schema = Yup.object().shape({
       title: Yup.string(),
       description: Yup.string(),
+      address: Yup.string().required(),
       date: Yup.date(),
       awards: Yup.number(),
       banner_id: Yup.number()

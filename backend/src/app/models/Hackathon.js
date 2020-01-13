@@ -6,6 +6,7 @@ class Hackathon extends Model {
       {
         title: Sequelize.STRING,
         description: Sequelize.STRING,
+        address: Sequelize.STRING,
         date: Sequelize.DATE,
         awards: Sequelize.INTEGER
       },
