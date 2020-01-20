@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize";
+import { isBefore, subHours } from "date-fns";
 
 class Hackathon extends Model {
   static init(sequelize) {
@@ -8,7 +9,19 @@ class Hackathon extends Model {
         description: Sequelize.STRING,
         address: Sequelize.STRING,
         date: Sequelize.DATE,
-        awards: Sequelize.INTEGER
+        awards: Sequelize.INTEGER,
+        past: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return isBefore(this.date, new Date());
+          }
+        },
+        cancelable: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return isBefore(new Date(), subHours(this.date, 1));
+          }
+        }
       },
       {
         sequelize

@@ -21,7 +21,7 @@ class HackathonController {
             attributes: ["id", "path", "url"]
           }
         ],
-        attributes: ["id", "title", "date"],
+        attributes: ["id", "title", "date", "past"],
         order: ["date"]
       });
 

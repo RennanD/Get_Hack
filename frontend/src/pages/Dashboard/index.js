@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { format, parseISO, isBefore } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
 import { MdDateRange, MdLink, MdDvr } from 'react-icons/md';
@@ -30,7 +30,6 @@ export default function Dashboard() {
                         locale: pt,
                     }
                 ),
-                past: isBefore(parseISO(h.date), new Date()),
             }));
 
             setHackathons(data);

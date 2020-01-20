@@ -1,4 +1,4 @@
-import { isBefore, isEqual } from "date-fns";
+import { isBefore, isEqual, subHours } from "date-fns";
 
 import User from "../models/User";
 import File from "../models/File";
@@ -12,7 +12,14 @@ class SubscriptionController {
       include: [
         {
           association: "hackathons",
-          attributes: ["id", "title", "description", "date", "awards"],
+          attributes: [
+            "id",
+            "title",
+            "description",
+            "date",
+            "awards",
+            "cancelable"
+          ],
           include: [
             {
               model: User,
@@ -120,6 +127,39 @@ class SubscriptionController {
       awards,
       date
     });
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    try {
+      const hackathon = await Hackathon.findByPk(id, {
+        include: [{ association: "users" }]
+      });
+      const user = await User.findByPk(req.userId);
+
+      const userIncludes = hackathon.users.find(user => user.id === req.userId);
+
+      if (!userIncludes)
+        return res.status(401).json({
+          error: "You don't have permission to cancel this subscription."
+        });
+
+      const dateWithSub = subHours(hackathon.date, 1);
+
+      if (isBefore(dateWithSub, new Date()))
+        return res.status(400).json({
+          error: "You can only cancel subscription 1 hours in advance."
+        });
+
+      await user.removeHackathon(hackathon);
+
+      return res.json({ msg: "Successful subscription canceled!" });
+    } catch (err) {
+      return res
+        .status(400)
+        .json({ error: "Cannot be cancel this subscription." });
+    }
   }
 }
 
