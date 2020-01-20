@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { Container, Content, Profile } from './styles';
 
-import logo from '~/assets/laptop.svg';
+import logo from '~/assets/logo.svg';
 
 export default function Header() {
     const profile = useSelector(state => state.user.profile);
