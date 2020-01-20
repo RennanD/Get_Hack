@@ -28,7 +28,7 @@ To init backend, see api's documentation [here](./backend/README.md)
 # 💻 Web Application
 
 <h1 align="center">
-    <img src ="./assets/browser.svg" width="200px" />
+    <img src ="./assets/browser.svg" width="150px" />
 </h1>
 
 <h3 align="center">
