@@ -38,3 +38,10 @@ export const LinkText = styled.Text`
   font-size: 14px;
   font-weight: bold;
 `;
+
+export const ShowPassord = styled.TouchableOpacity`
+  height: 46px;
+  justify-content: center;
+  margin-top: 5px;
+  padding: 0 5px;
+`;
