@@ -15,12 +15,6 @@ class Hackathon extends Model {
           get() {
             return isBefore(this.date, new Date());
           }
-        },
-        cancelable: {
-          type: Sequelize.VIRTUAL,
-          get() {
-            return isBefore(new Date(), subHours(this.date, 1));
-          }
         }
       },
       {
