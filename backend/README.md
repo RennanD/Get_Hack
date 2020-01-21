@@ -27,20 +27,6 @@ $ yarn install
 $ npm install
 ```
 
-## Environment variables
-
-For environment variables, use the .env.example file as a base.
-
-## Test Mail
-
-Use [Mailtrap](https://mailtrap.io/) for testing your emails.
-
-## Create the database
-
-```bash
-$ yarn sequelize db:migrate
-```
-
 ## Usage
 
 Install the [docker](https://www.docker.com/) to run postgres and redis.
@@ -53,6 +39,20 @@ $ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postg
 
 ```bash
 $ docker run --name some-redis -d redis
+```
+
+### Environment variables
+
+For environment variables, use the .env.example file as a base.
+
+### Test Mail
+
+Use [Mailtrap](https://mailtrap.io/) for testing your emails.
+
+### Create the database
+
+```bash
+$ yarn sequelize db:migrate
 ```
 
 ## Usage Routes:

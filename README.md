@@ -19,7 +19,7 @@
 
 # 💾 Backend
 
-For the backend we will use [Node.Js](https://yarnpkg.com/lang/en/)
+For the backend we will use [Node.Js](https://nodejs.org/en/)
 
 ## Api documentation
 
