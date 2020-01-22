@@ -5,9 +5,16 @@ export function singInRequest(email, password) {
   };
 }
 
+export function singUpRequest(name, email, password) {
+  return {
+    type: '@auth/SING_UP_REQUEST',
+    payload: {name, email, password},
+  };
+}
+
 export function singInSucess(user, token) {
   return {
-    type: '@auth/SING_IN_REQUEST',
+    type: '@auth/SING_IN_SUCCESS',
     payload: {user, token},
   };
 }

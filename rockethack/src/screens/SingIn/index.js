@@ -19,11 +19,10 @@ import {singInRequest} from '~/store/modules/auth/actions';
 
 export default function SingIn({navigation}) {
   const {navigate} = navigation;
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [secury, setSecury] = useState(true);
-
-  const dispatch = useDispatch();
 
   function handleSubmit() {
     dispatch(singInRequest(email, password));
@@ -54,7 +53,8 @@ export default function SingIn({navigation}) {
             <LinkText>{secury ? 'Mostrar senha' : 'Esconder senha'}</LinkText>
           </ShowPassord>
 
-          <SubmitButton onPress={handleSubmit}>Entrar</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
+
           <LinkButton onPress={() => navigate('SingUp')}>
             <LinkText> Criar conta </LinkText>
           </LinkButton>
