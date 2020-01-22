@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {Image} from 'react-native';
 
 import {
@@ -14,28 +15,47 @@ import {
 import Background from '~/components/Background';
 
 import logo from '~/assets/logo.png';
+import {singInRequest} from '~/store/modules/auth/actions';
 
-export default function SingIn() {
+export default function SingIn({navigation}) {
+  const {navigate} = navigation;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [secury, setSecury] = useState(true);
+
+  const dispatch = useDispatch();
+
+  function handleSubmit() {
+    dispatch(singInRequest(email, password));
+  }
 
   return (
     <Background>
       <Container>
         <Image source={logo} />
         <Form>
-          <FormInput icon="mail-outline" placeholder="Digite seu email" />
+          <FormInput
+            icon="mail-outline"
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder="Digite seu email"
+            valeu={email}
+            onChangeText={setEmail}
+          />
           <FormInput
             icon={secury ? 'lock-outline' : 'lock-open'}
             secureTextEntry={secury}
             placeholder="Digite sua senha"
+            valeu={password}
+            onChangeText={setPassword}
           />
 
           <ShowPassord onPress={() => setSecury(!secury)}>
             <LinkText>{secury ? 'Mostrar senha' : 'Esconder senha'}</LinkText>
           </ShowPassord>
 
-          <SubmitButton onPress={() => {}}>Entrar</SubmitButton>
-          <LinkButton onPress={() => {}}>
+          <SubmitButton onPress={handleSubmit}>Entrar</SubmitButton>
+          <LinkButton onPress={() => navigate('SingUp')}>
             <LinkText> Criar conta </LinkText>
           </LinkButton>
         </Form>
