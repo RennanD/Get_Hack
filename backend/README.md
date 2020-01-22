@@ -3,11 +3,11 @@
 </h1>
 
 <h3 align="center">
-GET HACK - API
+ROCKETHACK - API
 </h3>
 
 <p align="center">
-Get Hack application backend.
+Rockethack application backend.
 Application developed as a study, the backend is made in Node.Js with PostgresSQL.
 </p>
 
