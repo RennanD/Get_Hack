@@ -12,8 +12,6 @@ import {
   ShowPassord,
 } from './styles';
 
-import Background from '~/components/Background';
-
 import logo from '~/assets/logo.png';
 import {singUpRequest} from '~/store/modules/auth/actions';
 
@@ -34,49 +32,47 @@ export default function SingUp({navigation}) {
   }
 
   return (
-    <Background>
-      <Container>
-        <Image source={logo} />
-        <Form>
-          <FormInput
-            icon="person-outline"
-            placeholder="Digite seu nome"
-            onSubmitEditing={() => emailRef.current.focus()}
-            value={name}
-            onChangeText={setName}
-          />
-          <FormInput
-            icon="mail-outline"
-            placeholder="Digite seu email"
-            autoCapitalize="none"
-            autoCorrect={false}
-            onSubmitEditing={() => passwordRef.current.focus()}
-            ref={emailRef}
-            value={email}
-            onChangeText={setEmail}
-          />
-          <FormInput
-            icon={secury ? 'lock-outline' : 'lock-open'}
-            secureTextEntry={secury}
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder="Digite sua senha"
-            onSubmitEditing={handleSubmit}
-            ref={passwordRef}
-            value={password}
-            onChangeText={setPassword}
-          />
+    <Container>
+      <Image source={logo} />
+      <Form>
+        <FormInput
+          icon="person-outline"
+          placeholder="Digite seu nome"
+          onSubmitEditing={() => emailRef.current.focus()}
+          value={name}
+          onChangeText={setName}
+        />
+        <FormInput
+          icon="mail-outline"
+          placeholder="Digite seu email"
+          autoCapitalize="none"
+          autoCorrect={false}
+          onSubmitEditing={() => passwordRef.current.focus()}
+          ref={emailRef}
+          value={email}
+          onChangeText={setEmail}
+        />
+        <FormInput
+          icon={secury ? 'lock-outline' : 'lock-open'}
+          secureTextEntry={secury}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Digite sua senha"
+          onSubmitEditing={handleSubmit}
+          ref={passwordRef}
+          value={password}
+          onChangeText={setPassword}
+        />
 
-          <ShowPassord onPress={() => setSecury(!secury)}>
-            <LinkText>{secury ? 'Mostrar senha' : 'Esconder senha'}</LinkText>
-          </ShowPassord>
+        <ShowPassord onPress={() => setSecury(!secury)}>
+          <LinkText>{secury ? 'Mostrar senha' : 'Esconder senha'}</LinkText>
+        </ShowPassord>
 
-          <SubmitButton onPress={handleSubmit}>Entrar</SubmitButton>
-          <LinkButton onPress={() => navigate('SingIn')}>
-            <LinkText> Já tenho login </LinkText>
-          </LinkButton>
-        </Form>
-      </Container>
-    </Background>
+        <SubmitButton onPress={handleSubmit}>Entrar</SubmitButton>
+        <LinkButton onPress={() => navigate('SingIn')}>
+          <LinkText> Já tenho login </LinkText>
+        </LinkButton>
+      </Form>
+    </Container>
   );
 }

@@ -4,13 +4,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // import { Container } from './styles';
 
-export default function Home() {
+export default function Dashboard() {
   return <View />;
 }
 
-Home.navigationOptions = {
-  title: 'Hackathons',
+Dashboard.navigationOptions = {
+  title: 'Inscrições',
   tabBarIcon: ({tintColor}) => (
-    <Icon name="date-range" size={20} color={tintColor} />
+    <Icon name="local-offer" size={20} color={tintColor} />
   ),
 };
