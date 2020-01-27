@@ -11,6 +11,6 @@ export default function Dashboard() {
 Dashboard.navigationOptions = {
   title: 'Inscrições',
   tabBarIcon: ({tintColor}) => (
-    <Icon name="local-offer" size={20} color={tintColor} />
+    <Icon name="label-outline" size={28} color={tintColor} />
   ),
 };

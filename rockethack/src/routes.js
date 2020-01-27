@@ -12,8 +12,8 @@ import SingUp from '~/screens/SingUp';
  * App Screens
  */
 
-import Home from '~/screens/Home';
 import Dashboard from '~/screens/Dashboard';
+import Available from '~/screens/Hackathons';
 
 export default (signed = false) =>
   createAppContainer(
@@ -25,7 +25,7 @@ export default (signed = false) =>
         }),
         App: createBottomTabNavigator(
           {
-            Home,
+            Available,
             Dashboard,
           },
           {
@@ -33,8 +33,9 @@ export default (signed = false) =>
               style: {
                 backgroundColor: '#222',
               },
-              activeTintColor: '#fefefe',
+              activeTintColor: '#2193f6',
               inactiveTintColor: 'rgba(255,255,255,0.6)',
+              showLabel: false,
             },
           },
         ),
